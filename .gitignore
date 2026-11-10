@@ -1,5 +1,5 @@
 output/pdf/*
-!output/pdf/exam.pdf
+!output/pdf/regression_analysis.pdf
 *.aux
 *.fdb_latexmk
 *.fls
