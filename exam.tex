@@ -1,0 +1,311 @@
+% !TeX program = xelatex
+\documentclass[UTF8,fontset=fandol,zihao=-4,a4paper]{ctexart}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{array,booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+
+\geometry{left=2.1cm,right=2.1cm,top=1.8cm,bottom=1.8cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\headheight}{14pt}
+\renewcommand{\arraystretch}{1.35}
+\raggedbottom
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\small（共 7 页）第 \thepage 页}
+
+\newcommand{\examsection}[2]{%
+  \vspace{0.2em}\noindent{\heiti\bfseries #1（#2）}\par\vspace{0.45em}}
+\newcommand{\blank}[1]{\underline{\hspace{#1}}}
+\newcommand{\answerarea}[1]{\par\vspace{#1}}
+
+\begin{document}
+
+\begin{flushright}
+姓名：\blank{3cm}\qquad 学号：\blank{3.5cm}
+\end{flushright}
+
+\begin{center}
+\begin{tabular}{|>{\centering\arraybackslash}p{1.8cm}|*{6}{>{\centering\arraybackslash}p{1.55cm}|}>{\centering\arraybackslash}p{1.8cm}|}
+\hline
+题号 & 一 & 二 & 三 & 四 & 五 & 六 & 总分 \\
+\hline
+得分 & & & & & & & \\
+\hline
+\end{tabular}
+\end{center}
+
+\examsection{一、单项选择题}{每小题 3 分，共 24 分}
+
+\begin{enumerate}[label=\arabic*.,leftmargin=2em,itemsep=0.45em,topsep=0pt]
+  \item 一元线性回归模型 $t$ 检验的 $P$ 值为 $0.03$，在 $\alpha=0.05$ 的显著性水平下，结论是（\quad）。
+  \begin{enumerate}[label=\Alph*.,leftmargin=2.5em,itemsep=0pt,topsep=1pt]
+    \item 接受原假设，自变量对因变量无显著影响
+    \item 拒绝原假设，自变量对因变量无显著影响
+    \item 接受原假设，自变量对因变量有显著影响
+    \item 拒绝原假设，自变量对因变量有显著影响
+  \end{enumerate}
+
+  \item 回归模型诊断中，残差分析的核心目的不包括（\quad）。
+  \begin{enumerate}[label=\Alph*.,leftmargin=2.5em,itemsep=0pt,topsep=1pt]
+    \item 判断模型是否满足独立性假定
+    \item 验证误差的等方差性
+    \item 检验自变量的显著性
+    \item 确认误差的正态性
+  \end{enumerate}
+
+  \item 多元线性回归中，用于检验整个回归方程显著性的方法是（\quad）。
+  \par\smallskip
+  \begin{tabular*}{\linewidth}{@{\hspace{2em}}@{\extracolsep{\fill}}llll@{}}
+    A. $t$ 检验 & B. $F$ 检验 & C. 卡方检验 & D. 相关系数检验
+  \end{tabular*}
+
+  \item 一元线性回归中，若回归系数 $\beta_1$ 的置信区间为 $(0.32,\,0.78)$，则在 $\alpha=0.05$ 水平下（\quad）。
+  \par\smallskip
+  \begin{tabular}{@{\hspace{2em}}p{0.42\linewidth}p{0.42\linewidth}@{}}
+    A. $\beta_1$ 显著不为 $0$ & B. $\beta_1$ 显著为 $0$ \\
+    C. 无法判断 $\beta_1$ 的显著性 & D. $\beta_1$ 与 $0$ 无差异
+  \end{tabular}
+
+  \item 回归模型诊断中，若残差与拟合值的散点图呈现「喇叭状」分布，说明模型存在（\quad）。
+  \par\smallskip
+  \begin{tabular*}{\linewidth}{@{\hspace{2em}}@{\extracolsep{\fill}}llll@{}}
+    A. 多重共线性 & B. 异方差性 & C. 自相关性 & D. 残差非正态性
+  \end{tabular*}
+
+  \item 已知一元线性回归模型估计的残差平方和为 $\sum_{i=1}^{n}e_i^2=1000$，估计用样本容量为 $n=59$，则随机误差项 $\varepsilon_i$ 的方差的无偏估计量 $\hat{\sigma}^2$ 为（\quad）。
+  \par\smallskip
+  \begin{tabular*}{\linewidth}{@{\hspace{2em}}@{\extracolsep{\fill}}llll@{}}
+    A. $33.33$ & B. $20$ & C. $38.09$ & D. $16.95$
+  \end{tabular*}
+\end{enumerate}
+
+\newpage
+
+\begin{enumerate}[label=\arabic*.,leftmargin=2em,itemsep=0.8em,topsep=0pt]
+  \setcounter{enumi}{6}
+  \item 在 DW 检验中，存在负自相关的判定区域是（\quad）。
+  \begin{enumerate}[label=\Alph*.,leftmargin=2.5em,itemsep=0.1em,topsep=1pt]
+    \item $4-d_L<d<4$
+    \item $0<d<d_L$
+    \item $d_U<d<4-d_U$
+    \item $d_L<d<d_U;\ 4-d_U<d<4-d_L$
+  \end{enumerate}
+
+  \item 在回归分析中若诊断出异方差，常通过方差稳定变换对因变量进行变换，如果误差方差与因变量 $y$ 的期望成正比，则可通过下列哪种变换将方差常数化（\quad）。
+  \par\smallskip
+  \begin{tabular*}{\linewidth}{@{\hspace{2em}}@{\extracolsep{\fill}}llll@{}}
+    A. $\dfrac{1}{y}$ & B. $\sqrt{y}$ & C. $\ln(y+1)$ & D. $\ln y$
+  \end{tabular*}
+\end{enumerate}
+
+\examsection{二、填空题}{每空 3 分，共 21 分}
+
+\begin{enumerate}[label=\arabic*.,leftmargin=2em,itemsep=0.75em,topsep=0pt]
+  \item 自相关问题的两种常用处理方法：\blank{8cm}。
+
+  \item BOX--COX 变换的具体形式 $y_i^{(\lambda)}=$\blank{8cm}。
+
+  \item 观测数据的样本量为 $n$，写出多元线性回归模型的矩阵形式 $\boldsymbol{y}=\boldsymbol{X}\boldsymbol{\beta}+\boldsymbol{\varepsilon}$，其中
+  \[
+    \boldsymbol{X}=\blank{4cm},\qquad \boldsymbol{y}=\blank{3cm},
+  \]
+  \[
+    \boldsymbol{\beta}=\begin{pmatrix}\beta_0\\\beta_1\\\beta_2\\\beta_3\\\beta_4\end{pmatrix},\qquad
+    \boldsymbol{\varepsilon}=\begin{pmatrix}\varepsilon_1\\\varepsilon_2\\\vdots\\\varepsilon_n\end{pmatrix}.
+  \]
+
+  \item 对给定的 15 组数据，拟合被解释变量 $y$ 关于解释变量 $x$ 的简单回归模型，表 1 给出了输出结果。
+
+  \begin{center}
+  {\small 表 1\quad 方差分析表}
+  \end{center}
+  \begin{Verbatim}[fontsize=\scriptsize,baselinestretch=0.9]
+> anova(lm2)
+Analysis of Variance Table
+
+Response: y
+          Df Sum Sq Mean Sq F value    Pr(>F)
+x          1 841.77  841.77  156.89 1.248e-08 ***
+Residuals 13  69.75    5.37
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+  \end{Verbatim}
+
+  依据上述结果计算模型的拟合优度 $R^2=$\blank{4cm}。
+
+  \item 在诊断自相关现象时，若 $\mathrm{DW}=0.28$，则误差序列的自相关系数 $\rho$ 的估计值为：\par
+  \hfill\blank{4cm}。
+\end{enumerate}
+
+\newpage
+
+\examsection{三、简答题}{每小题 5 分，共 15 分}
+
+\begin{enumerate}[label=\arabic*.,leftmargin=2em,itemsep=0pt,topsep=0pt]
+  \item 多元线性回归模型的基本假设是什么？
+  \answerarea{4.7cm}
+
+  \item 简述如何识别因变量和自变量的异常值？
+  \answerarea{4.7cm}
+
+  \item 什么是异方差性？说明异方差性的常见表现形式，以及如何检验模型是否存在异方差性。
+  \answerarea{5.2cm}
+\end{enumerate}
+
+\newpage
+
+\examsection{四、证明题}{共 10 分}
+
+证明多元线性回归模型中参数 $\sigma^2$ 的估计
+\[
+  \hat{\sigma}^2=\frac{1}{n-p-1}\mathrm{SSE}
+\]
+是误差项方差 $\sigma^2$ 的无偏估计。
+
+\answerarea{5.6cm}
+
+\examsection{五、计算题}{每小题 10 分，共 20 分}
+
+\begin{enumerate}[label=\arabic*.,leftmargin=2em,itemsep=0.4em,topsep=0pt]
+  \item 某研究机构调查了 10 个城市的人均可支配收入（$x$，单位：万元）与居民消费支出（$y$，单位：万元），得到如下统计数据：
+  \[
+    \sum x_i=32,\qquad \sum y_i=21,\qquad \sum x_i y_i=75.6,
+    \qquad \sum x_i^2=110,\qquad \sum y_i^2=47.5.
+  \]
+  \begin{enumerate}[label=(\arabic*),leftmargin=2.5em,itemsep=0.35em,topsep=0pt]
+    \item 计算样本相关系数 $r$，在显著性水平为 $0.05$ 下判断 $x$ 与 $y$ 的线性相关强度（$t_{0.025}(8)=2.306,\ t_{0.05}(8)=1.8595$）；
+    \item 建立 $y$ 关于 $x$ 的一元线性回归方程 $\hat{y}=\hat{\beta}_0+\hat{\beta}_1x$；
+    \item 解释回归系数 $\beta_1$ 的经济含义。
+  \end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{enumerate}[label=\arabic*.,leftmargin=2em,itemsep=0.4em,topsep=0pt]
+  \setcounter{enumi}{1}
+  \item 现有 $x$ 和 $y$ 的样本观测值如下表：
+
+  \begin{center}
+  \begin{tabular}{|c|ccccc|}
+    \hline
+    $x$ & 2 & 5 & 10 & 4 & 10 \\
+    \hline
+    $y$ & 4 & 7 & 4 & 5 & 9 \\
+    \hline
+  \end{tabular}
+  \end{center}
+
+  假设 $y$ 对 $x$ 的回归模型为 $y_i=\beta_0+\beta_1x_i+\varepsilon_i$，且 $\operatorname{Var}(\varepsilon_i)=\sigma^2x_i^2$，试用恰当的方法估计此异方差回归模型。
+\end{enumerate}
+
+\answerarea{9cm}
+
+\examsection{六、综合分析题}{10 分}
+
+研究 GDP 和投资额 $K$ 都是用定基居民消费价格指数（CPI）缩减后的值，利用线性化的乘性误差项模型拟合 C--D 生产函数，结果见图 2，DW 检验结果见图 3，差分法变换后模型结果及 DW 检验见图 4。
+
+\newpage
+
+{\fontsize{8.2pt}{9.2pt}\selectfont
+\begin{Verbatim}
+> y<-log(data1[,2]) # y=lnGDP
+> x1<-log(data1[,3]) # x1=lnK
+> x2<-log(data1[,4]) # x2=lnL
+> lm1<-lm(y~x1+x2)
+> summary(lm1)
+
+Call:
+lm(formula = y ~ x1 + x2)
+
+Residuals:
+      Min        1Q    Median        3Q       Max
+-0.122422 -0.018666  0.001167  0.034700  0.083987
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)
+(Intercept)   1.96643    1.37312   1.432   0.1662
+x1            0.78775    0.05572  14.139 1.66e-12 ***
+x2            0.42786    0.16458   2.600   0.0164 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.04753 on 22 degrees of freedom
+Multiple R-squared:  0.9942,    Adjusted R-squared:  0.9936
+F-statistic: 1870 on 2 and 22 DF,  p-value: < 2.2e-16
+\end{Verbatim}
+\begin{center}
+图 2\quad 回归模型拟合结果
+\end{center}
+
+\begin{Verbatim}
+> library(lmtest)
+> dwtest(lm1)
+
+        Durbin-Watson test
+
+data:  lm1
+DW = 0.85704, p-value = 0.0001705
+alternative hypothesis: true autocorrelation is greater than 0
+\end{Verbatim}
+\begin{center}
+图 3\quad 自相关检验结果
+\end{center}
+}
+
+\newpage
+
+{\fontsize{8.2pt}{9.2pt}\selectfont
+\begin{Verbatim}
+> dy=diff(y)
+> dx1=diff(x1)
+> dx2=diff(x2)
+> dlm=lm(dy~dx1+dx2-1)
+> summary(dlm)
+
+Call:
+lm(formula = dy ~ dx1 + dx2 - 1)
+
+Residuals:
+      Min        1Q    Median        3Q       Max
+-0.076697  0.003605  0.026885  0.041117  0.060796
+
+Coefficients:
+    Estimate Std. Error t value Pr(>|t|)
+dx1  0.66021    0.07253   9.103 6.49e-09 ***
+dx2  0.25495    0.15417   1.654    0.112
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.03907 on 22 degrees of freedom
+Multiple R-squared:  0.8224,    Adjusted R-squared:  0.8062
+F-statistic: 50.93 on 2 and 22 DF,  p-value: 5.554e-09
+
+> dwtest(dlm,alternative="two.sided")
+
+        Durbin-Watson test
+
+data:  dlm
+DW = 1.7815, p-value = 0.6321
+alternative hypothesis: true autocorrelation is not 0
+\end{Verbatim}
+\begin{center}
+图 4\quad 差分法后模型结果及 DW 检验
+\end{center}
+}
+
+\begin{enumerate}[label=(\arabic*),leftmargin=2.5em,itemsep=0.45em,topsep=0pt]
+  \item 写出用线性化的乘性误差项模型拟合的 C--D 生产函数；
+  \item 对线性化的回归检验是否存在一阶自相关及相关方向，为什么？\\
+  （临界值 $d_L=1.29,\ d_U=1.45$）
+  \item 用差分法消除自相关结果见图 4，请问进行差分后是否消除自相关，并写出最终的回归方程？
+\end{enumerate}
+
+\end{document}

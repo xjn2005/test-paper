@@ -1,0 +1,7 @@
+output/pdf/*
+!output/pdf/exam.pdf
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.xdv
