@@ -1,7 +1,12 @@
-output/pdf/*
-!output/pdf/regression_analysis.pdf
+# LaTeX intermediate files
 *.aux
 *.fdb_latexmk
 *.fls
 *.log
+*.synctex.gz
 *.xdv
+
+# PDFs belong in output/pdf; keep only final PDFs there.
+/*.pdf
+output/pdf/*
+!output/pdf/*.pdf

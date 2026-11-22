@@ -1,0 +1,379 @@
+% !TeX program = xelatex
+\documentclass[UTF8,fontset=fandol,zihao=-4,a4paper]{ctexart}
+
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage{needspace}
+
+\geometry{left=1.75cm,right=1.75cm,top=1.65cm,bottom=1.65cm,headheight=15pt,headsep=0.45cm,footskip=0.8cm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedbottom
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small C\texttt{++} 面向对象程序设计}
+\fancyhead[R]{\small 多态性专题试卷}
+\fancyfoot[C]{\small 第 \thepage 页}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\examsection}[2]{%
+  \Needspace{6\baselineskip}%
+  \vspace{0.15em}%
+  {\heiti\zihao{4}\bfseries #1\hfill #2}\par
+  \vspace{0.2em}\hrule\vspace{0.5em}}
+\newcommand{\blank}[1][2.4cm]{\underline{\hspace{#1}}}
+\newcommand{\judgebox}{\makebox[1.7cm][c]{（\qquad）}}
+\newcommand{\choicebox}{\makebox[1.7cm][c]{（\qquad）}}
+\newcommand{\codeRule}{\rule{2.2cm}{0.4pt}}
+
+\setlist[enumerate,1]{label=\arabic*.,leftmargin=2.2em,itemsep=0.38em,topsep=0pt,parsep=0pt}
+\setlist[enumerate,2]{label=\Alph*.,leftmargin=2.6em,itemsep=0.1em,topsep=0.2em,parsep=0pt}
+
+\DefineVerbatimEnvironment{cppcode}{Verbatim}{%
+  fontsize=\scriptsize,
+  baselinestretch=0.92,
+  frame=lines,
+  framesep=1.8mm,
+  xleftmargin=0.8em,
+  xrightmargin=0.8em
+}
+
+% 代码块整体装入 minipage，确保不会在页尾被截成两半。
+\newenvironment{codekeep}
+  {\par\smallskip\noindent\begin{minipage}{\linewidth}}
+  {\end{minipage}\par\smallskip}
+
+% 程序题的题干、代码和答案栏整体排版，避免题目跨页断裂。
+\newenvironment{questionkeep}
+  {\begin{minipage}[t]{\linewidth}}
+  {\end{minipage}}
+
+\begin{document}
+
+\begin{center}
+  {\heiti\zihao{2}\bfseries C\texttt{++} 面向对象程序设计}\par
+  \vspace{0.35em}
+  {\heiti\zihao{3}\bfseries 多态性专题试卷}\par
+  \vspace{0.9em}
+  姓名：\blank[3.2cm]\qquad
+  学号：\blank[3.8cm]\qquad
+  班级：\blank[2.8cm]
+\end{center}
+
+\vspace{0.7em}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|>{\centering\arraybackslash}p{2.2cm}|*{4}{>{\centering\arraybackslash}p{2.15cm}|}>{\centering\arraybackslash}p{2.2cm}|}
+  \hline
+  题号 & 一 & 二 & 三 & 四 & 总分 \\
+  \hline
+  分值 & 32 & 20 & 24 & 24 & 100 \\
+  \hline
+  得分 & & & & & \\
+  \hline
+\end{tabular}
+\end{center}
+
+\vspace{0.8em}
+{\small\textbf{说明：}本试卷共 36 题，满分 100 分。判断题在括号内填写「√」或「×」；选择题每题只有一个正确选项。}
+
+\vspace{1em}
+\examsection{一、判断题}{每题 2 分，共 32 分}
+
+\begin{enumerate}
+  \item 多态性是指同一个操作作用于不同的对象时，可以产生不同的执行结果。\hfill\judgebox
+
+  \item C\texttt{++} 中的函数重载和运算符重载属于运行时多态（动态多态）。\hfill\judgebox
+
+  \item 虚函数必须在基类中使用 \texttt{virtual} 关键字声明，且在派生类中重写时也必须加上 \texttt{virtual} 关键字才能生效。\hfill\judgebox
+
+  \item 纯虚函数在基类中不提供具体实现；包含纯虚函数的类称为抽象类，不能直接实例化对象。\hfill\judgebox
+
+  \item 静态多态在程序运行期间根据对象的实际类型决定调用哪个函数。\hfill\judgebox
+
+  \item 通过基类指针删除派生类对象时，如果基类的析构函数不是虚函数，可能导致派生类部分的资源无法被正确释放。\hfill\judgebox
+
+  \item C\texttt{++} 模板（template）技术是实现编译时多态的重要机制之一，它允许编译器根据传入的类型生成具体代码。\hfill\judgebox
+
+  \item 动态多态的实现必须同时满足三个条件：存在继承关系；基类中有虚函数且派生类进行了重写；通过基类的指针或引用进行调用。\hfill\judgebox
+
+  \item 函数重载属于静态多态，在编译阶段完成绑定。\hfill\judgebox
+
+  \item 虚函数实现的动态多态是在编译期确定调用哪个函数。\hfill\judgebox
+
+  \item 只要类中定义了 \texttt{virtual} 成员函数，就一定能产生动态多态效果。\hfill\judgebox
+
+  \item 基类指针指向派生类对象时，如果所调用的函数不是虚函数，则调用基类版本。\hfill\judgebox
+
+  \item 纯虚函数所在的类是抽象类，不能实例化创建对象。\hfill\judgebox
+
+  \item 运算符重载只能实现静态多态，无法实现动态多态。\hfill\judgebox
+
+  \item 派生类重写虚函数时，函数名、参数列表和返回值类型必须与基类虚函数完全一致（协变返回类型除外）。\hfill\judgebox
+
+  \item 模板属于动态多态，在运行时根据类型确定代码。\hfill\judgebox
+\end{enumerate}
+
+\examsection{二、填空题}{每题 2 分，共 20 分}
+
+\begin{enumerate}
+  \item C\texttt{++} 中的多态性按照绑定时机的不同，主要分为\blank 和\blank 两大类。
+
+  \item 在 C\texttt{++} 中，声明虚函数需要使用\blank 关键字；声明纯虚函数则需要在虚函数声明末尾加上\blank。
+
+  \item 运行时多态的底层实现机制依赖于\blank（VTable）和对象内部隐藏的\blank（vptr）。
+
+  \item 函数重载要求在同一作用域内函数名相同，但\blank 必须不同；编译器在编译阶段根据参数类型和数量进行静态绑定。
+
+  \item 如果基类中包含虚函数，为了保证通过基类指针删除派生类对象时能正确调用派生类析构函数，基类的析构函数必须声明为\blank。
+
+  \item C\texttt{++} 多态分为两大类：\blank 多态（编译期绑定）和\blank 多态（运行期绑定）。
+
+  \item 实现动态多态的三个条件是：继承、\blank、基类指针或引用指向派生类对象。
+
+  \item 含有纯虚函数的类称为\blank 类，该类不能定义实例对象。
+
+  \item 纯虚函数的声明格式为：\texttt{virtual 返回类型 函数名(参数) }\blank\texttt{;}。
+
+  \item 函数重载、运算符重载和模板都属于\blank 多态。
+\end{enumerate}
+
+\vspace{1em}
+\examsection{三、单项选择题}{每题 4 分，共 24 分}
+
+\begin{enumerate}
+  \item 以下关于 C\texttt{++} 多态性的描述，错误的是\choicebox
+  \begin{enumerate}
+    \item 静态多态在编译期决定调用哪个函数，没有额外的运行时开销
+    \item 动态多态通过继承和虚函数实现，提高了代码的灵活性和可扩展性
+    \item 函数重载和模板都属于动态多态的实现方式
+    \item 动态多态在运行时通过查表跳转的方式确定实际调用的函数地址
+  \end{enumerate}
+
+  \item 关于虚函数表（VTable）和虚表指针（vptr），以下说法正确的是\choicebox
+  \begin{enumerate}
+    \item 虚函数表是每个对象实例独有的，其中存储了该对象的成员变量地址
+    \item 虚表指针是编译器自动添加的隐藏指针，指向该对象所属类的虚函数表
+    \item 只要类中定义了任意成员函数，编译器就会为其生成虚函数表
+    \item 虚函数表是一个全局数组，所有类的虚函数都存储在同一个表中
+  \end{enumerate}
+
+  \item 阅读以下代码，关于其多态特性的描述正确的是\choicebox
+
+\begin{codekeep}
+\begin{cppcode}
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    virtual void show() { cout << "Base"; }
+    virtual ~Base() = default;
+};
+
+class Derived : public Base {
+public:
+    void show() override { cout << "Derived"; }
+};
+
+int main() {
+    Base* ptr = new Derived();
+    ptr->show();
+    delete ptr;
+}
+\end{cppcode}
+\end{codekeep}
+
+  \begin{enumerate}
+    \item 这是静态多态，输出 \texttt{"Base"}
+    \item 这是动态多态，输出 \texttt{"Derived"}
+    \item 这是静态多态，输出 \texttt{"Derived"}
+    \item 这是动态多态，输出 \texttt{"Base"}
+  \end{enumerate}
+
+  \item 下面哪一项属于动态多态？\choicebox
+  \begin{enumerate}
+    \item 函数重载
+    \item 类模板
+    \item 虚函数重写
+    \item 运算符重载
+  \end{enumerate}
+
+  \item 关于虚函数，以下说法错误的是\choicebox
+  \begin{enumerate}
+    \item 虚函数使用 \texttt{virtual} 关键字修饰
+    \item 通过指向派生类对象的基类引用可以触发动态绑定
+    \item 普通成员函数也可以实现运行时多态
+    \item 虚函数是实现动态多态的核心机制
+  \end{enumerate}
+
+  \item 抽象类的特点是\choicebox
+  \begin{enumerate}
+    \item 可以直接创建对象
+    \item 至少包含一个纯虚函数
+    \item 不能被继承
+    \item 所有成员都必须是虚函数
+  \end{enumerate}
+\end{enumerate}
+
+\examsection{四、程序填空题}{每题 6 分，共 24 分}
+
+\begin{enumerate}
+  \item
+  \begin{questionkeep}
+  \textbf{基础动态多态。}补全代码，使程序正确输出 \texttt{"Dog barks"} 和 \texttt{"Cat meows"}，实现运行时多态。
+
+\begin{cppcode}
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    // 填空（1）：使 speak 成为虚函数
+    __________ void speak() { cout << "Animal sound" << endl; }
+    virtual ~Animal() = default;
+};
+
+class Dog : public Animal {
+public:
+    void speak() override { cout << "Dog barks" << endl; }
+};
+
+class Cat : public Animal {
+public:
+    void speak() override { cout << "Cat meows" << endl; }
+};
+
+void makeSound(Animal* animal) {
+    animal->speak();
+}
+
+int main() {
+    Dog dog;
+    Cat cat;
+    makeSound(&dog);
+    makeSound(&cat);
+    return 0;
+}
+\end{cppcode}
+
+  填空（1）：\blank[5cm]
+  \end{questionkeep}
+
+  \item
+  \begin{questionkeep}
+  \textbf{抽象类与纯虚函数。}补全代码，定义图形抽象基类，并实现圆的面积计算。
+
+\begin{cppcode}
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    // 填空（1）：补全纯虚函数声明，使 Shape 成为抽象类
+    virtual double area() __________;
+    virtual ~Shape() = default;
+};
+
+class Circle : public Shape {
+    double radius;
+public:
+    explicit Circle(double r) : radius(r) {}
+
+    // 填空（2）：补全重写基类方法的函数头
+    __________ double area() override {
+        return 3.14159 * radius * radius;
+    }
+};
+
+int main() {
+    Circle c(5.0);
+    Shape* shapePtr = &c;
+    cout << "Area: " << shapePtr->area() << endl;
+    return 0;
+}
+\end{cppcode}
+
+  填空（1）：\blank[4cm]\qquad 填空（2）：\blank[4cm]
+  \end{questionkeep}
+
+  \item
+  \begin{questionkeep}
+  \textbf{虚函数调用。}补全代码，使基类指针调用派生类重写后的 \texttt{show()} 函数，并输出 \texttt{"Derive show"}。
+
+\begin{cppcode}
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    // 填空（1）：定义虚函数 show
+    __________ void show() {
+        cout << "Base show" << endl;
+    }
+    virtual ~Base() = default;
+};
+
+class Derive : public Base {
+public:
+    void show() override {
+        cout << "Derive show" << endl;
+    }
+};
+
+int main() {
+    Base* p = new Derive();
+    p->show();
+    delete p;
+    return 0;
+}
+\end{cppcode}
+
+  填空（1）：\blank[5cm]
+  \end{questionkeep}
+
+  \item
+  \begin{questionkeep}
+  \textbf{纯虚函数。}补全纯虚函数末尾标记，使 \texttt{Abstract} 成为抽象类。
+
+\begin{cppcode}
+#include <iostream>
+using namespace std;
+
+class Abstract {
+public:
+    // 填空（1）：补全纯虚函数末尾标记
+    virtual void func() __________;
+    virtual ~Abstract() = default;
+};
+
+class Son : public Abstract {
+public:
+    void func() override {
+        cout << "Son 实现纯虚函数" << endl;
+    }
+};
+
+int main() {
+    Abstract* p = new Son();
+    p->func();
+    delete p;
+    return 0;
+}
+\end{cppcode}
+
+  填空（1）：\blank[5cm]
+  \end{questionkeep}
+\end{enumerate}
+
+\vfill
+\begin{center}
+  \heiti —— 试卷结束，请仔细检查 ——
+\end{center}
+
+\end{document}
