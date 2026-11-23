@@ -1,0 +1,195 @@
+% !TeX program = xelatex
+\documentclass[UTF8,11pt,fontset=fandol]{ctexart}
+
+\usepackage[a4paper,top=1.7cm,bottom=1.7cm,left=2.2cm,right=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{array}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.12}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=0.45em,topsep=0.35em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\examsection}[1]{%
+  \par\vspace{0.35em}
+  \begin{center}
+    \large\bfseries #1
+  \end{center}
+  \vspace{0.15em}
+}
+
+\newcommand{\blank}[1]{\rule[-0.25em]{#1}{0.4pt}}
+\newcommand{\answerarea}[1]{%
+  \par\vspace{0.25em}
+  \rule{\linewidth}{0pt}\par
+  \vspace{#1}
+}
+\newcommand{\measconv}{\xrightarrow{m}}
+\newenvironment{twocolchoices}{%
+  \par\smallskip
+  \begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.33\linewidth}@{\hspace{2em}}>{\raggedright\arraybackslash}p{0.57\linewidth}@{}}%
+}{%
+  \end{tabular}\par
+}
+\newenvironment{singlechoices}{%
+  \begin{enumerate}[label=\Alph*.,leftmargin=2.1em,itemsep=0pt,topsep=0.15em,parsep=0pt,partopsep=0pt]
+}{%
+  \end{enumerate}
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries 实变函数期中测验}\par
+  \vspace{1.7em}
+  考试时间：90 分钟\hspace{3em}满分：100 分\hspace{3em}闭卷
+\end{center}
+
+\vspace{1.2em}
+\noindent
+姓名：\blank{4.2cm}\hfill
+学号：\blank{4.2cm}\hfill
+班级：\blank{4.2cm}
+
+\vspace{1.2em}
+\examsection{一、选择题（每小题 2 分，共 10 分）}
+
+\begin{enumerate}
+  \item 下列集合中为可数集的是
+    \begin{twocolchoices}
+      A. $\mathbb{R}$ & B. $\mathbb{Q}$ \\
+      C. $[0,1]$ & D. Cantor 三分集
+    \end{twocolchoices}
+
+  \item 设 $A\subset B\subset\mathbb{R}^{n}$，则下列结论必然成立的是
+    \begin{twocolchoices}
+      A. $A'\supset B'$ & B. $\overline{A}\subset\overline{B}$ \\
+      C. $\overline{A}\supset\overline{B}$ & D. $\partial A\supset\partial B$
+    \end{twocolchoices}
+
+  \item 若 $m^{*}E=0$，则
+    \begin{twocolchoices}
+      A. $E$ 一定不可测 & B. $E$ 可测且 $mE=0$ \\
+      C. $E$ 一定是开集 & D. $E$ 一定是闭集
+    \end{twocolchoices}
+
+  \item 设 $f(x)$ 是定义在可测集 $E\subset\mathbb{R}^{n}$ 上的实函数，则 $f$ 在 $E$ 上可测的等价条件是
+    \begin{singlechoices}
+      \item 对任意有限实数 $a$，$E[f>a]$ 可测
+      \item 对任意有限实数 $a$，$E[f=a]$ 可测
+      \item $f$ 在 $E$ 上连续
+      \item $f$ 在 $E$ 上有界
+    \end{singlechoices}
+
+  \item 设 $mE<\infty$，$\{f_n\}$ 是 $E$ 上 a.e. 有限的可测函数列，且
+    $f_n\to f$ a.e. 于 $E$，其中 $f$ 也 a.e. 有限，则
+    \begin{singlechoices}
+      \item $f_n$ 在 $E$ 上一致收敛于 $f$
+      \item $f_n$ 在 $E$ 上依测度收敛于 $f$
+      \item $f_n$ 在 $E$ 上处处收敛于 $f$
+      \item 以上结论都不一定成立
+    \end{singlechoices}
+\end{enumerate}
+
+\newpage
+
+\examsection{二、填空题（每小题 2 分，共 10 分）}
+
+\begin{enumerate}
+  \item 若 $A$ 是可数集，$B$ 是有限或可数集，则 $A\cup B$ 是\blank{5cm}集。
+
+  \item 直线上任一非空开集可以表示为\blank{8cm}。
+
+  \item 外测度的次可数可加性为
+    \[
+      m^{*}\!\left(\bigcup_{n=1}^{\infty}A_n\right)
+      \le \blank{7cm}.
+    \]
+
+  \item 设 $f$ 是可测集 $E$ 上的可测函数，则对任意有限实数 $a$，
+    \[
+      E[f\geq a]=\blank{9cm}.
+    \]
+
+  \item 叶戈罗夫定理：设 $mE<\infty$，$\{f_n\}$ 是 $E$ 上 a.e. 收敛于 $f$ 的
+    可测函数列，则对任意 $\delta>0$，存在可测子集 $E_{\delta}\subset E$，使
+    \[
+      m(E\setminus E_{\delta})<\delta,
+    \]
+    且 $f_n$ 在 $E_{\delta}$ 上\blank{5cm}于 $f$。
+\end{enumerate}
+
+\vspace{0.7em}
+\examsection{三、简述概念（每小题 4 分，共 20 分）}
+
+\begin{enumerate}
+  \item 可数集。
+    \answerarea{1.05cm}
+
+  \item 聚点与导集。
+    \answerarea{1.05cm}
+
+  \item 勒贝格外测度。
+    \answerarea{1.05cm}
+
+  \item 可测函数。
+    \answerarea{1.05cm}
+
+  \item 依测度收敛。
+    \answerarea{1.05cm}
+\end{enumerate}
+
+\newpage
+
+\examsection{四、计算题（10 分）}
+
+\begin{enumerate}
+  \item 设集合列 $\{A_n\}$ 定义为
+    \[
+      A_{2n-1}=\left(0,\frac{1}{n}\right),\qquad
+      A_{2n}=(0,n),\qquad n=1,2,\ldots
+    \]
+    求上下极限 $\displaystyle\limsup_{n\to\infty}A_n$、
+    $\displaystyle\liminf_{n\to\infty}A_n$。
+    \answerarea{4.5cm}
+\end{enumerate}
+
+\examsection{五、证明题（共 50 分）}
+
+\begin{enumerate}
+  \item 证明：$\mathbb{R}$ 中可数集的外测度为 $0$。（10 分）
+    \answerarea{4.1cm}
+
+  \item 证明：若 $m^{*}E=0$，则 $E$ 是勒贝格可测集，且 $mE=0$。（10 分）
+    \answerarea{4.1cm}
+\end{enumerate}
+
+\newpage
+
+\begin{enumerate}[start=3]
+  \item 设 $mE<\infty$。证明：在 $E$ 上 $f_n(x)\measconv f(x)$ 的充要条件是：
+    对于 $\{f_n(x)\}$ 的任意子函数列 $\{f_{n_k}(x)\}$，存在
+    $\{f_{n_k}(x)\}$ 的子函数列 $\{f_{n_{k_j}}(x)\}$，使得
+    \[
+      \lim_{j\to\infty}f_{n_{k_j}}(x)=f(x)
+      \qquad \text{a.e. 于 }E.
+    \]
+    （15 分）
+    \answerarea{7.2cm}
+
+  \item 设 $mE<\infty$，$\{f_n\}$ 是 $E$ 上 a.e. 有限的可测函数列，且
+    \[
+      f_n(x)\to f(x)\qquad \text{a.e. 于 }E,
+    \]
+    其中 $f$ 也 a.e. 有限。证明：$f_n$ 在 $E$ 上依测度收敛于 $f$。（15 分）
+    \answerarea{7.2cm}
+\end{enumerate}
+
+\end{document}
